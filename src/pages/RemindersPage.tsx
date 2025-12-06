@@ -18,9 +18,7 @@ import toast from 'react-hot-toast';
 const RemindersPage: React.FC = () => {
   const { currentUser } = useUserStore();
   const { 
-    reminders, 
     addReminder, 
-    updateReminder, 
     deleteReminder, 
     toggleReminder,
     getRemindersForUser 

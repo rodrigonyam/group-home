@@ -1,11 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import {
-  AdjustmentsHorizontalIcon,
   BellIcon,
   EyeIcon,
-  SpeakerWaveIcon,
-  DevicePhoneMobileIcon,
   ShieldCheckIcon,
 } from '@heroicons/react/24/outline';
 import { useUserStore } from '../stores/userStore';

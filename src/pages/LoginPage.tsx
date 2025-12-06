@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { UserIcon, PhotoIcon, PhoneIcon } from '@heroicons/react/24/outline';
+import { UserIcon } from '@heroicons/react/24/outline';
 import { useUserStore } from '../stores/userStore';
 import { User } from '../types';
 

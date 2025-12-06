@@ -14,7 +14,7 @@ import toast from 'react-hot-toast';
 const ProfilePage: React.FC = () => {
   const { currentUser, setCurrentUser } = useUserStore();
   const [isEditing, setIsEditing] = useState(false);
-  const [editData, setEditData] = useState(currentUser || {});
+  const [editData, setEditData] = useState(currentUser || {} as any);
 
   if (!currentUser) {
     return (
@@ -25,7 +25,7 @@ const ProfilePage: React.FC = () => {
   }
 
   const handleSave = () => {
-    if (editData.name && editData.emergencyContact?.name && editData.emergencyContact?.phone) {
+    if ((editData as any).name && (editData as any).emergencyContact?.name && (editData as any).emergencyContact?.phone) {
       setCurrentUser(editData as any);
       setIsEditing(false);
       toast.success('Profile updated successfully!');
@@ -267,7 +267,7 @@ const ProfilePage: React.FC = () => {
                   <input
                     type="text"
                     className="input-senior"
-                    value={editData.name || ''}
+                    value={(editData as any).name || ''}
                     onChange={(e) => setEditData({ ...editData, name: e.target.value })}
                   />
                 </div>
@@ -279,7 +279,7 @@ const ProfilePage: React.FC = () => {
                   <input
                     type="text"
                     className="input-senior"
-                    value={editData.room || ''}
+                    value={(editData as any).room || ''}
                     onChange={(e) => setEditData({ ...editData, room: e.target.value })}
                   />
                 </div>
@@ -292,11 +292,11 @@ const ProfilePage: React.FC = () => {
                     <input
                       type="text"
                       className="input-senior"
-                      value={editData.emergencyContact?.name || ''}
+                      value={(editData as any).emergencyContact?.name || ''}
                       onChange={(e) => setEditData({
                         ...editData,
                         emergencyContact: {
-                          ...editData.emergencyContact!,
+                          ...(editData as any).emergencyContact!,
                           name: e.target.value
                         }
                       })}
@@ -309,11 +309,11 @@ const ProfilePage: React.FC = () => {
                     <input
                       type="tel"
                       className="input-senior"
-                      value={editData.emergencyContact?.phone || ''}
+                      value={(editData as any).emergencyContact?.phone || ''}
                       onChange={(e) => setEditData({
                         ...editData,
                         emergencyContact: {
-                          ...editData.emergencyContact!,
+                          ...(editData as any).emergencyContact!,
                           phone: e.target.value
                         }
                       })}
@@ -327,11 +327,11 @@ const ProfilePage: React.FC = () => {
                   </label>
                   <select
                     className="input-senior"
-                    value={editData.emergencyContact?.relationship || ''}
+                    value={(editData as any).emergencyContact?.relationship || ''}
                     onChange={(e) => setEditData({
                       ...editData,
                       emergencyContact: {
-                        ...editData.emergencyContact!,
+                        ...(editData as any).emergencyContact!,
                         relationship: e.target.value
                       }
                     })}

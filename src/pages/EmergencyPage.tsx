@@ -32,7 +32,7 @@ interface HealthInfo {
 
 const EmergencyPage: React.FC = () => {
   const [emergencyActive, setEmergencyActive] = useState(false);
-  const [selectedEmergencyType, setSelectedEmergencyType] = useState<string | null>(null);
+
   const [countdown, setCountdown] = useState(0);
 
   const emergencyContacts: EmergencyContact[] = [
@@ -98,9 +98,8 @@ const EmergencyPage: React.FC = () => {
     { id: 'safety', name: 'Safety Concern', icon: '⚠️', color: 'bg-purple-600', description: 'Suspicious activity or safety issue' },
   ];
 
-  const startEmergencyCall = (contact: EmergencyContact, emergencyType?: string) => {
+  const startEmergencyCall = (contact: EmergencyContact) => {
     setEmergencyActive(true);
-    setSelectedEmergencyType(emergencyType || 'general');
     setCountdown(5);
 
     const countdownInterval = setInterval(() => {
@@ -119,7 +118,6 @@ const EmergencyPage: React.FC = () => {
 
   const cancelEmergency = () => {
     setEmergencyActive(false);
-    setSelectedEmergencyType(null);
     setCountdown(0);
   };
 
@@ -209,7 +207,7 @@ const EmergencyPage: React.FC = () => {
         className="grid md:grid-cols-2 gap-4"
       >
         <motion.button
-          onClick={() => startEmergencyCall(emergencyContacts[0], 'medical')}
+          onClick={() => startEmergencyCall(emergencyContacts[0])}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           className="p-8 bg-red-600 text-white rounded-xl text-center hover:bg-red-700 transition-colors"
@@ -220,7 +218,7 @@ const EmergencyPage: React.FC = () => {
         </motion.button>
 
         <motion.button
-          onClick={() => startEmergencyCall(emergencyContacts[1], 'help')}
+          onClick={() => startEmergencyCall(emergencyContacts[1])}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           className="p-8 bg-orange-600 text-white rounded-xl text-center hover:bg-orange-700 transition-colors"
@@ -246,7 +244,7 @@ const EmergencyPage: React.FC = () => {
           {emergencyTypes.map((type, index) => (
             <motion.button
               key={type.id}
-              onClick={() => startEmergencyCall(emergencyContacts[0], type.id)}
+              onClick={() => startEmergencyCall(emergencyContacts[0])}
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.1 * index }}

@@ -10,7 +10,7 @@ import {
   ChevronRightIcon,
   HomeIcon,
 } from '@heroicons/react/24/outline';
-import { format, startOfWeek, addDays, isSameDay, parseISO } from 'date-fns';
+import { format, startOfWeek, addDays, isSameDay } from 'date-fns';
 
 const CalendarPage: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());

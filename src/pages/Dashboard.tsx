@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { format } from 'date-fns';
-import { Link } from 'react-router-dom';
 import {
   BellIcon,
   CalendarIcon,
@@ -128,7 +127,7 @@ const Dashboard: React.FC = () => {
     }
   ];
 
-  const allButtons = [...socialButtons, ...dailyLivingButtons];
+
 
   const handleButtonClick = (button: any) => {
     if (button.disabled) {
